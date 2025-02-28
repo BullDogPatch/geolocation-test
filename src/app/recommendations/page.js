@@ -19,26 +19,17 @@ export default function NearbyRestaurants() {
     };
 
     const getUserLocation = () => {
-      return new Promise((resolve, reject) => {
-        if (!('geolocation' in navigator)) {
-          reject(new Error('Geolocation not supported'));
-        } else {
-          navigator.geolocation.getCurrentPosition(
-            (position) => resolve(position.coords),
-            (error) => reject(new Error('Geolocation error: ' + error.message))
-          );
-        }
+      return new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition((position) =>
+          resolve(position.coords)
+        );
       });
     };
 
     const fetchData = async () => {
-      try {
-        const { latitude, longitude } = await getUserLocation();
-        setLocation({ latitude, longitude });
-        await fetchRestaurants(latitude, longitude);
-      } catch (err) {
-        console.error(err.message);
-      }
+      const { latitude, longitude } = await getUserLocation();
+      setLocation({ latitude, longitude });
+      await fetchRestaurants(latitude, longitude);
     };
 
     fetchData();
