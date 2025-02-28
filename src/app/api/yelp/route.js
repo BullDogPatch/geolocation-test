@@ -10,7 +10,7 @@ export async function GET(req) {
 
   try {
     const res = await fetch(
-      `https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=${latitude}&longitude=${longitude}&limit=30`,
+      `https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=${latitude}&longitude=${longitude}&limit=40`,
       {
         method: 'GET',
         headers: {
