@@ -56,12 +56,19 @@ export default function NearbyRestaurants() {
       )}
       <ul>
         {restaurants.map((restaurant) => (
-          <li key={restaurant.id}>
+          <li
+            key={restaurant.id}
+            className='m-5 p-6 w-56 border border-red-100'
+          >
             <p>{restaurant.name}</p>
             <p>Rating: {restaurant.rating}</p>
             <p>Address: {restaurant.location?.address1}</p>
             {restaurant.image_url && restaurant.image_url !== '' ? (
-              <img src={restaurant.image_url} alt={restaurant.name} />
+              <img
+                src={restaurant.image_url}
+                alt={restaurant.name}
+                className='w-[300px]'
+              />
             ) : (
               <p>No image available</p>
             )}
