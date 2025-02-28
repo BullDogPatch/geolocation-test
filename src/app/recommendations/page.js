@@ -54,6 +54,12 @@ export default function NearbyRestaurants() {
             <p>{restaurant.name}</p>
             <p>Rating: {restaurant.rating}</p>
             <p>Address: {restaurant.location?.address1}</p>
+            <p>
+              Category:{' '}
+              {restaurant.categories
+                ?.map((category) => category.title)
+                .join(', ')}
+            </p>
             {restaurant.image_url && restaurant.image_url !== '' ? (
               <img
                 src={restaurant.image_url}
